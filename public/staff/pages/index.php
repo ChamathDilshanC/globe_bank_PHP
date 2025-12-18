@@ -3,17 +3,56 @@
 <?php $page_title = 'Staff Management'; ?>
 
 <?php include(SHARED_STAFF_PATH . '/staff_header.php'); ?>
-<?php include(SHARED_STAFF_PATH . '/staff_content.php'); ?>
 
+
+<?php
+  $pages = [
+    ['id' => '1', 'position' => '1', 'visible' => '1', 'menu_name' => 'Globe Bank'],
+    ['id' => '2', 'position' => '2', 'visible' => '1', 'menu_name' => 'History'],
+    ['id' => '3', 'position' => '3', 'visible' => '1', 'menu_name' => 'Leadership'],
+    ['id' => '4', 'position' => '4', 'visible' => '1', 'menu_name' => 'Contact Us'],
+  ];
+?>
+
+<?php $page_title = 'Pages'; ?>
 
 <div id="content">
-  <h2>Main Menu</h2>
-  <ul>
-    <li><a href="<?php echo url_for('/staff/pages/index.php'); ?>">Staff Home</a></li>
-    <li><a href="<?php echo url_for('/staff/subjects/index.php'); ?>">Subjects</a></li>
-  </ul>
+  <div class="pages listing">
+    <h1>Pages</h1>
+
+    <div class="actions">
+      <a class="action" href="">Create New Page</a>
+    </div>
+
+  	<table class="list">
+  	  <tr>
+        <th>ID</th>
+        <th>Position</th>
+        <th>Visible</th>
+  	    <th>Name</th>
+  	    <th>&nbsp;</th>
+  	    <th>&nbsp;</th>
+        <th>&nbsp;</th>
+  	  </tr>
+
+      <?php foreach($pages as $page) { ?>
+        <tr>
+          <td><?php echo hsc($page['id']); ?></td>
+          <td><?php echo hsc($page['position']); ?></td>
+          <td><?php echo $page['visible'] == 1 ? 'true' : 'false'; ?></td>
+    	    <td><?php echo hsc($page['menu_name']); ?></td>
+          <td><a class="action" href="<?php echo url_for('/staff/pages/show.php?id=' . hsc(u($page['id']))); ?>">View</a></td>
+          <td><a class="action" href="">Edit</a></td>
+          <td><a class="action" href="">Delete</a></td>
+    	  </tr>
+      <?php } ?>
+  	</table>
+
+  </div>
+
 </div>
 
-<?php include(SHARED_STAFF_PATH . '/staff_footer.php'); ?>
 
+<?php include(SHARED_STAFF_PATH . '/staff_content.php'); ?>
+<?php include(SHARED_STAFF_PATH . '/staff_footer.php'); ?>
 

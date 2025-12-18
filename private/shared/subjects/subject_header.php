@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Globe Bank International Staff Portal - Secure banking management system">
-  <title><?php echo $page_title; ?></title>
+  <title><?php echo hsc($page_title); ?></title>
   <link rel="stylesheet" href="<?php echo url_for("/stylesheets/staff.css"); ?> " media="all">
 </head>
 <body>
